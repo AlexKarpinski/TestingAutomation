@@ -1,0 +1,25 @@
+{
+  "name": "testingautomation",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Demo project",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "chance": "^1.1.7",
+    "jasmine": "^3.7.0",
+    "jasmine-data-provider": "^2.2.0",
+    "log4js": "^6.3.0",
+    "protractor": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "update-deps": "npm update",
+    "prestart": "npm install",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor protractor.conf.js --suite filters"
+  },
+  "license": "ISC"
+}
