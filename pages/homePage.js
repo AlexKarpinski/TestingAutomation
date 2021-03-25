@@ -1,6 +1,4 @@
-let ratingData = require("../data/ratingData.js");
 let cuisinesData = require("../data/cuisinesData");
-let Chance = require('chance');
 
 class HomePage {
 
@@ -52,34 +50,8 @@ class HomePage {
         browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, `${numberOfRestaurant} restaurants found`))
     };
 
-    async setCuisine(typeOfCuisines) {
-        await this.getCuisineCheckbox(typeOfCuisines).click();
-    };
-
-    async setRandomListOfCuisines(listOfCuisines) {
-        listOfCuisines.forEach(cuisine => {
-            this.setCuisine(cuisine.typeOfRestaurant);
-        })
-    };
-
-    getRandomListOfCuisines(count) {
-        let listOfCuisines = [];
-        for (let i = 0; i < count; i++) {
-            let CUISINE = Object.values(cuisinesData.cuisine)[Chance().integer({min: 0, max: 9})];
-            if (!listOfCuisines.includes(CUISINE)) {
-                listOfCuisines.push(CUISINE);
-            }
-        }
-        return listOfCuisines
-    };
-
-    getCountOfRestaurantsFromRandomList(listOfCuisines) {
-        let resultCount = 0;
-        listOfCuisines.forEach(cuisine => {
-            let countOfCuisines = cuisine.restaurants.length;
-            resultCount = resultCount + countOfCuisines;
-        });
-        return resultCount;
+    async selectCuisine(cuisine) {
+        await this.getCuisineCheckbox(cuisine).click();
     };
 
     get countOfRestaurantsFromLabel() {
@@ -110,6 +82,12 @@ class HomePage {
 
     async getValueForRestaurantInList(name, index) {
         return (await this.getRatingElement(name, index)).count()
+    };
+
+    async selectCuisines(cuisines) {
+        cuisines.forEach(cuisine => {
+            this.selectCuisine(cuisine.typeOfRestaurant);
+        })
     };
 
     // getNamesOfRestaurantsInTheList() {

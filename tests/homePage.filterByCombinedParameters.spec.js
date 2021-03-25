@@ -35,7 +35,7 @@ describe('Home Page -> Filter by combined parameters', function () {
         logger.info('AND User sets rating');
         HomePage.setFilter(FILTER_RATING_NAME, COMBINATIONS_ALL_FILTERS.rating);
         logger.info(`AND User sets the ${COMBINATIONS_ALL_FILTERS.typeOfRestaurant} `);
-        HomePage.setCuisine(COMBINATIONS_ALL_FILTERS.typeOfRestaurant);
+        HomePage.selectCuisine(COMBINATIONS_ALL_FILTERS.typeOfRestaurant);
         logger.info('THEN The number of results is correct');
         expect(HomePage.countOfRestaurants).toEqual(COMBINATIONS_ALL_FILTERS.totalResults);
     });
