@@ -35,18 +35,6 @@ class HomePage {
         return this.cuisineList.element(by.css(`input[value="${typeOfCuisines}"]`));
     };
 
-    // getNamesOfRestaurantsInTheList() {
-    //     let names = [];
-    //     element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).then(elements=>{
-    //         logger.info(`${elements}`);
-    //         elements.forEach(el=> {
-    //             logger.info(`${el.element(by.css('b[class="ng-binding"]')).getText().toString()}`);
-    //             names.push(el.element(by.css('b[class="ng-binding"]')).getText().toString());
-    //         })
-    //     })
-    //     return names;
-    // }
-
     getClearButton(name) {
         let clearButton;
         switch (name) {
@@ -123,6 +111,18 @@ class HomePage {
     async getValueForRestaurantInList(name, index) {
         return (await this.getRatingElement(name, index)).count()
     };
+
+    // getNamesOfRestaurantsInTheList() {
+    //     let names = [];
+    //     element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).then(elements=>{
+    //         logger.info(`${elements}`);
+    //         elements.forEach(el=> {
+    //             logger.info(`${el.element(by.css('b[class="ng-binding"]')).getText().toString()}`);
+    //             names.push(el.element(by.css('b[class="ng-binding"]')).getText().toString());
+    //         })
+    //     })
+    //     return names;
+    // }
 
 }
 
