@@ -21,7 +21,7 @@ describe('Home Page -> Filter by rating', function () {
         for (let i = 0; i < HomePage.countOfRestaurants; i++) {
             expect(HomePage.getValueForRestaurantInList(FILTER_NAME, i)).toBe(CUISINES_WITH_RATING.rating);
         }
-    })
+    });
 
     it('Clear rating filter', function () {
         logger.info(`WHEN User clears ${FILTER_NAME} filter`);
