@@ -1,16 +1,14 @@
-let cuisinesData = require("../data/cuisinesData");
-
 class HomePage {
 
     open() {
         browser.waitForAngularEnabled(false);
         browser.get(browser.baseUrl);
-        this.waitForRestaurantLoading(cuisinesData.numberOfRestaurant);
+        this.waitForPageLoading()
     };
 
     reload() {
         browser.refresh();
-        this.waitForRestaurantLoading(cuisinesData.numberOfRestaurant)
+        this.waitForPageLoading()
     };
 
     get listOfRestaurantsLabel() {
@@ -55,8 +53,8 @@ class HomePage {
             `//fm-rating[@ng-model="$parent.restaurant.price"]//*[contains(@class,"fm-selected")]`))
     };
 
-    waitForRestaurantLoading(numberOfRestaurant) {
-        browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, `${numberOfRestaurant} restaurants found`))
+    waitForPageLoading() {
+        browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, 'restaurants found!'))
     };
 
     async selectCuisine(cuisine) {
