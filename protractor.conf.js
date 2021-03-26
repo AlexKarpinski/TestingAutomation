@@ -19,6 +19,7 @@ exports.config = {
         defaultTimeoutInterval: 30000
     },
     suites: {
+        filterByEachCuisines: ['tests/home.page.filterByEachCuisine.spec.js'],
         filterByCuisines: ['tests/homePage.filterByCuisines.spec.js'],
         filterByRating: ['tests/homePage.filterByRating.spec.js'],
         filterByPrice: ['tests/homePage.filterByPrice.spec.js'],
