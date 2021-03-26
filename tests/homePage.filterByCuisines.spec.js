@@ -5,8 +5,8 @@ let Chance = require('chance');
 
 
 const CUISINE = Chance().pickone(cuisinesData.cuisine),
-    COUNT_OF_CUISINES = [Chance().integer({min: 2, max: 11})],
-    CUISINES = Helper.getRandomCuisines(COUNT_OF_CUISINES);
+    NUMBER_OF_CUISINES = [Chance().integer({min: 2, max: 11})],
+    CUISINES = Chance().pickset(cuisinesData.cuisine, NUMBER_OF_CUISINES);
 
 
 describe('Home Page -> Filter by cuisines', function () {
