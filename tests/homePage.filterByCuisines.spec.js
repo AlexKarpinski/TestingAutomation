@@ -16,7 +16,7 @@ describe('Home Page -> Filter by cuisines', function () {
         HomePage.open();
     });
 
-    it('Filter by one cuisine', function () {
+    it('Filter for each cuisine', () => {
         logger.info(`WHEN User sets the ${CUISINE.typeOfRestaurant} `);
         HomePage.selectCuisine(CUISINE.typeOfRestaurant);
         logger.info(`THEN ${CUISINE.typeOfRestaurant} checkbox should be checked `);
@@ -28,7 +28,7 @@ describe('Home Page -> Filter by cuisines', function () {
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINE.restaurants.length);
     });
 
-    it('Filter by list of cuisines', function () {
+    it('Filter by list of cuisines', () => {
         logger.info('WHEN User sets the list of cuisines');
         HomePage.selectCuisines(CUISINES);
         logger.info('THEN The count of restaurants in the list should be as count of restaurant from label');
@@ -37,7 +37,7 @@ describe('Home Page -> Filter by cuisines', function () {
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(Helper.getCountOfRestaurantsFromCuisines(CUISINES));
     });
 
-    it('Clear cuisines filter', function () {
+    it('Clear cuisines filter', () => {
         logger.info('WHEN User sets the list of cuisines');
         HomePage.selectCuisines(CUISINES);
         logger.info('THEN The count of found results is correct');

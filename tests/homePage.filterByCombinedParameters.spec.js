@@ -2,6 +2,7 @@ let HomePage = require('../pages/homePage');
 let combinationsData = require("../data/combinationsData");
 let Chance = require('chance');
 
+
 const CUISINES_COMBINATION_RATING_AND_PRICE = Chance().pickone(combinationsData.combinationsPriceAndRating),
     CUISINES_COMBINATION_ALL_FILTERS = Chance().pickone(combinationsData.combinationsAllFilters);
 
@@ -13,7 +14,7 @@ describe('Home Page -> Filter by combined parameters', function () {
         HomePage.open();
     });
 
-    it('Filter by rating and price', function () {
+    it('Filter by rating and price', () => {
         logger.info('WHEN User sets the rating');
         HomePage.setRatingFilter(CUISINES_COMBINATION_RATING_AND_PRICE.rating);
         logger.info('AND User sets the price');
@@ -22,7 +23,7 @@ describe('Home Page -> Filter by combined parameters', function () {
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINES_COMBINATION_RATING_AND_PRICE.totalResults);
     });
 
-    it('Filter by rating, price and cuisines', function () {
+    it('Filter by rating, price and cuisines', () => {
         logger.info('WHEN User sets price');
         HomePage.setRatingFilter(CUISINES_COMBINATION_ALL_FILTERS.rating);
         logger.info('AND User sets rating');
@@ -35,7 +36,7 @@ describe('Home Page -> Filter by combined parameters', function () {
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINES_COMBINATION_ALL_FILTERS.totalResults);
     });
 
-    afterEach(function () {
+    afterEach(() => {
         HomePage.reload()
     });
 
