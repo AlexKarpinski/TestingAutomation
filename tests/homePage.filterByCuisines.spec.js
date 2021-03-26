@@ -1,55 +1,38 @@
-let HomePage = require('../pages/homePage');
-let Helper = require('../helper/helper.js');
-let cuisinesData = require("../data/cuisinesData");
 let Chance = require('chance');
+let Helper = require('../helper/helper.js');
+let HomePage = require('../pages/homePage');
+let data = require('../data/lit-basin-41473/data.json');
 
 
-const CUISINE = Chance().pickone(cuisinesData.cuisine),
-    NUMBER_OF_CUISINES = [Chance().integer({min: 2, max: 11})],
-    CUISINES = Chance().pickset(cuisinesData.cuisine, NUMBER_OF_CUISINES);
+const RESTAURANTS_DATA = data.restaurants,
+    CUISINES = Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA),
+    NUMBER_OF_CUISINES = [Chance().integer({min: 2, max: 14})],
+    RANDOM_CUISINES = Chance().pickset(CUISINES, NUMBER_OF_CUISINES);
 
 
 describe('Home Page -> Filter by cuisines', function () {
 
-    beforeAll(() => {
+    beforeEach(() => {
         logger.info('GIVEN User at Home Page');
         HomePage.open();
-    });
-
-    it('Filter for each cuisine', () => {
-        logger.info(`WHEN User sets the ${CUISINE.typeOfRestaurant} `);
-        HomePage.selectCuisine(CUISINE.typeOfRestaurant);
-        logger.info(`THEN ${CUISINE.typeOfRestaurant} checkbox should be checked `);
-        expect(HomePage.getCuisineCheckbox(CUISINE.typeOfRestaurant).isSelected()).toBe(true);
-        logger.info('AND The number of restaurants in the list should be as count of restaurant from label');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(HomePage.getCountOfRestaurantsFromLabel());
-        logger.info('AND The number of results is correct');
-        logger.info(`${CUISINE.restaurants}`);
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINE.restaurants.length);
+        logger.info('WHEN User sets the list of cuisines');
+        HomePage.selectCuisines(RANDOM_CUISINES);
     });
 
     it('Filter by list of cuisines', () => {
-        logger.info('WHEN User sets the list of cuisines');
-        HomePage.selectCuisines(CUISINES);
         logger.info('THEN The count of restaurants in the list should be as count of restaurant from label');
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(HomePage.getCountOfRestaurantsFromLabel());
         logger.info('AND The count of found results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(Helper.getCountOfRestaurantsFromCuisines(CUISINES));
+        logger.info(Helper.getNumberOfRestaurantsWithCuisines(RESTAURANTS_DATA, CUISINES));
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getNumberOfRestaurantsWithCuisines(RESTAURANTS_DATA, RANDOM_CUISINES));
     });
 
     it('Clear cuisines filter', () => {
-        logger.info('WHEN User sets the list of cuisines');
-        HomePage.selectCuisines(CUISINES);
-        logger.info('THEN The count of found results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(Helper.getCountOfRestaurantsFromCuisines(CUISINES));
         logger.info('WHEN User clears cuisines filter');
-        HomePage.selectCuisines(CUISINES);
+        HomePage.selectCuisines(RANDOM_CUISINES);
         logger.info('THEN The count of found results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(cuisinesData.numberOfRestaurant);
-    });
-
-    afterEach(function () {
-        HomePage.reload()
+        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_DATA.length);
     });
 
 });

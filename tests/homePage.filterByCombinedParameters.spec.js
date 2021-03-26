@@ -1,5 +1,5 @@
 let HomePage = require('../pages/homePage');
-let combinationsData = require("../data/combinationsData");
+let combinationsData = require("../data/lit-basin-41473/combinationsData");
 let Chance = require('chance');
 
 
