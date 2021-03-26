@@ -10,10 +10,5 @@ npm install
 
 ### For running all tests perform the command
 ```
-protractor protractor.conf.js --suite all
-```
-
-### For running tests related to high priority suite run command:
-```
-protractor protractor.conf.js --suite highPriority
+protractor protractor.conf.js --suite allSuites
 ```
