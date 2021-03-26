@@ -18,3 +18,10 @@ npm install
 ```
 protractor protractor.conf.js --suite allSuites
 ```
+
+### Allure report.
+After tests execution is completed, results are loaded into allure-results folder.
+To open allure report use the following command:
+```
+allure serve allure-results
+```
