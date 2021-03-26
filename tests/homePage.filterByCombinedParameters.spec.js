@@ -9,9 +9,8 @@ const RATING_AND_PRICE_FILTER = Object.values(combinationsData.combinationsPrice
     COMBINATIONS_ALL_FILTERS = Object.values(combinationsData.combinationsAllFilters)[Chance().integer({
         min: 0,
         max: 2
-    })],
-    FILTER_PRICE_NAME = 'price',
-    FILTER_RATING_NAME = 'rating';
+    })];
+
 
 describe('Home Page -> Filter by combined parameters', function () {
 
@@ -21,19 +20,19 @@ describe('Home Page -> Filter by combined parameters', function () {
     });
 
     it('Filter by rating and price', function () {
-        logger.info('WHEN User sets price');
-        HomePage.setFilter(FILTER_PRICE_NAME, RATING_AND_PRICE_FILTER.price);
-        logger.info('AND User sets rating');
-        HomePage.setFilter(FILTER_RATING_NAME, RATING_AND_PRICE_FILTER.rating);
+        logger.info('WHEN User sets the rating');
+        HomePage.setRatingFilter(RATING_AND_PRICE_FILTER.rating);
+        logger.info('AND User sets the price');
+        HomePage.setPriceFilter(RATING_AND_PRICE_FILTER.price);
         logger.info('THEN The number of results is correct');
         expect(HomePage.countOfRestaurants).toEqual(RATING_AND_PRICE_FILTER.totalResults);
     });
 
     it('Filter by rating, price and cuisines', function () {
         logger.info('WHEN User sets price');
-        HomePage.setFilter(FILTER_PRICE_NAME, COMBINATIONS_ALL_FILTERS.price);
+        HomePage.setRatingFilter(COMBINATIONS_ALL_FILTERS.price);
         logger.info('AND User sets rating');
-        HomePage.setFilter(FILTER_RATING_NAME, COMBINATIONS_ALL_FILTERS.rating);
+        HomePage.setPriceFilter(COMBINATIONS_ALL_FILTERS.rating);
         logger.info(`AND User sets the ${COMBINATIONS_ALL_FILTERS.typeOfRestaurant} `);
         HomePage.selectCuisine(COMBINATIONS_ALL_FILTERS.typeOfRestaurant);
         logger.info('THEN The number of results is correct');

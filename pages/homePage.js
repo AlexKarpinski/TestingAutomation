@@ -25,25 +25,35 @@ class HomePage {
         return element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).count()
     };
 
-    getFilter(name, value) {
-        return element(by.xpath(`//*[@ng-model="$parent.filter.${name}"]//li[${value}]`));
+    get clearRatingButton() {
+        return element(by.xpath("//fm-rating[1]/a"));
+
+    };
+
+    get clearPriceButton() {
+        return element(by.xpath("//fm-rating[2]/a"));
+    };
+
+    getRatingFilter(value) {
+        return element(by.xpath(`//*[@ng-model="$parent.filter.rating"]//li[${value}]`));
+    };
+
+    getPriceFilter(value) {
+        return element(by.xpath(`//*[@ng-model="$parent.filter.price"]//li[${value}]`));
     };
 
     getCuisineCheckbox(typeOfCuisines) {
         return this.cuisineList.element(by.css(`input[value="${typeOfCuisines}"]`));
     };
 
-    getClearButton(name) {
-        let clearButton;
-        switch (name) {
-            case 'rating':
-                clearButton = element(by.xpath("//fm-rating[1]/a"));
-                break;
-            case 'price':
-                clearButton = element(by.xpath("//fm-rating[2]/a"));
-                break;
-        }
-        return clearButton;
+    getRatingElement(index) {
+        return element.all(by.xpath(`//table//tr[${index + 2}]` +
+            `//fm-rating[@ng-model="$parent.restaurant.rating"]//*[contains(@class,"fm-selected")]`))
+    };
+
+    getPriceElement(index) {
+        return element.all(by.xpath(`//table//tr[${index + 2}]` +
+            `//fm-rating[@ng-model="$parent.restaurant.price"]//*[contains(@class,"fm-selected")]`))
     };
 
     waitForRestaurantLoading(numberOfRestaurant) {
@@ -54,34 +64,47 @@ class HomePage {
         await this.getCuisineCheckbox(cuisine).click();
     };
 
-    get countOfRestaurantsFromLabel() {
+    getCountOfRestaurantsFromLabel() {
         return this.listOfRestaurantsLabel.getText().then(text => {
             let elements = text.split(' ');
             return +elements[0]
         })
     };
 
-    async setFilter(name, value) {
-        await this.getFilter(name, value).click();
+    async setRatingFilter(value) {
+        await this.getRatingFilter(value).click();
     };
 
-    moveMouseToFilter(name) {
-        browser.actions().mouseMove(this.getClearButton(name)).perform()
+    async setPriceFilter(value) {
+        await this.getPriceFilter(value).click();
     };
 
-    clearFilter(name) {
-        browser.wait(EC.visibilityOf(this.getClearButton(name)), 10000, "Clear link for Price filter is not visible");
-        this.moveMouseToFilter(name);
-        this.getClearButton(name).click()
+    moveMouseToRatingFilter() {
+        browser.actions().mouseMove(this.clearRatingButton).perform()
     };
 
-    getRatingElement(name, index) {
-        return element.all(by.xpath(`//table//tr[${index + 2}]` +
-            `//fm-rating[@ng-model="$parent.restaurant.${name}"]//*[contains(@class,"fm-selected")]`))
+    moveMouseToPriceFilter() {
+        browser.actions().mouseMove(this.clearPriceButton).perform()
     };
 
-    async getValueForRestaurantInList(name, index) {
-        return (await this.getRatingElement(name, index)).count()
+    clearRatingFilter() {
+        browser.wait(EC.visibilityOf(this.clearRatingButton));
+        this.moveMouseToRatingFilter();
+        this.clearRatingButton.click()
+    };
+
+    clearPriceFilter() {
+        browser.wait(EC.visibilityOf(this.clearPriceButton));
+        this.moveMouseToPriceFilter();
+        this.clearPriceButton.click()
+    };
+
+    async getRatingForRestaurantInList(index) {
+        return (await this.getRatingElement(index)).count()
+    };
+
+    async getPriceForRestaurantInList(index) {
+        return (await this.getPriceElement(index)).count()
     };
 
     async selectCuisines(cuisines) {

@@ -20,7 +20,7 @@ describe('Home Page -> Filter by cuisines', function () {
         logger.info(`THEN ${CUISINE.typeOfRestaurant} checkbox should be checked `);
         expect(HomePage.getCuisineCheckbox(CUISINE.typeOfRestaurant).isSelected()).toBe(true);
         logger.info('AND The number of restaurants in the list should be as count of restaurant from label');
-        expect(HomePage.countOfRestaurants).toEqual(HomePage.countOfRestaurantsFromLabel);
+        expect(HomePage.countOfRestaurants).toEqual(HomePage.getCountOfRestaurantsFromLabel());
         logger.info('AND The number of results is correct');
         logger.info(`${CUISINE.restaurants}`);
         expect(HomePage.countOfRestaurants).toEqual(CUISINE.restaurants.length);
@@ -30,7 +30,7 @@ describe('Home Page -> Filter by cuisines', function () {
         logger.info('WHEN User sets the list of cuisines');
         HomePage.selectCuisines(CUISINES);
         logger.info('THEN The count of restaurants in the list should be as count of restaurant from label');
-        expect(HomePage.countOfRestaurants).toEqual(HomePage.countOfRestaurantsFromLabel);
+        expect(HomePage.countOfRestaurants).toEqual(HomePage.getCountOfRestaurantsFromLabel());
         logger.info('AND The count of found results is correct');
         expect(HomePage.countOfRestaurants).toEqual(Helper.getCountOfRestaurantsFromCuisines(CUISINES));
     });
