@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Demo project",
-  "repository": "https://github.com/AlexKarpinski/TestingAutomation.git",
+  "repository": "git@github.com:AlexKarpinski/TestingAutomation.git",
   "directories": {
     "test": "tests"
   },
