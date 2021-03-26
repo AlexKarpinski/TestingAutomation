@@ -21,7 +21,7 @@ protractor protractor.conf.js --suite allSuites
 
 ### Allure report.
 After tests execution is completed, results are loaded into allure-results folder.
-Run the following to see allure report:
+To open allure report use the following command:
 ```
 allure serve allure-results
 ```
