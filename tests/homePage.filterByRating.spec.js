@@ -13,11 +13,11 @@ describe('Home Page -> Filter by rating', function () {
         HomePage.open();
         logger.info('WHEN User sets rating');
         HomePage.setRatingFilter(RATING.rating);
+        logger.info('THEN The number of results is correct');
+        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RATING.numberOfRestaurantWithRating);
     });
 
     it('Filter by rating', function () {
-        logger.info('THEN The number of results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RATING.numberOfRestaurantWithRating);
         logger.info('AND Value of rating in the list is correct for all restaurants');
         for (let i = 0; i < HomePage.getCountOfRestaurantsFromResultsList(); i++) {
             expect(HomePage.getRatingForRestaurantInList(i)).toBe(RATING.rating);
