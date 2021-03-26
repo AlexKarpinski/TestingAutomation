@@ -47,8 +47,8 @@ class HomePage {
         browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, 'restaurants found!'));
     };
 
-    async selectCuisine(cuisine) {
-        await this.getCuisineCheckbox(cuisine).click();
+    selectCuisine(cuisine) {
+       this.getCuisineCheckbox(cuisine).click();
     };
 
     getCountOfRestaurantsFromLabel() {
@@ -88,7 +88,7 @@ class HomePage {
 
     selectCuisines(cuisines) {
         cuisines.forEach(cuisine => {
-            this.selectCuisine(cuisine.typeOfRestaurant);
+            this.selectCuisine(cuisine);
         })
     };
 
