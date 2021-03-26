@@ -29,7 +29,18 @@ class Helper {
     }
 
     getRestaurantsWithRating(restaurants, rating) {
-        return restaurants.filter(restaurant => restaurant.price === rating);
+        return restaurants.filter(restaurant => restaurant.rating === rating);
+    }
+
+    getRestaurantsWithRatingAndPrice(restaurants, rating, price) {
+        let restaurantsWithRating = this.getRestaurantsWithRating(restaurants, rating);
+        return this.getRestaurantsWithPrice(restaurantsWithRating, price);
+    }
+
+    getRestaurantsWithRatingAndPriceAndCuisine(restaurants, rating, price, cuisine) {
+        let restaurantsWithRating = this.getRestaurantsWithRating(restaurants, rating);
+        let restaurantsWithRatingAndPrice = this.getRestaurantsWithPrice(restaurantsWithRating, price);
+        return this.getRestaurantsWithCuisine(restaurantsWithRatingAndPrice, cuisine);
     }
 
 }
