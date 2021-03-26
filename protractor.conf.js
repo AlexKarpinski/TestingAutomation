@@ -9,7 +9,7 @@ exports.config = {
     capabilities: {
         browserName: "chrome",
         shardTestFiles: true,
-        maxInstances: 2
+        maxInstances: 4
     },
 
     baseUrl: 'https://lit-basin-41473.herokuapp.com/#/',
@@ -28,8 +28,6 @@ exports.config = {
     onPrepare: function () {
         global.EC = protractor.ExpectedConditions;
         let log4js = require('log4js');
-        let Chance = require('chance');
-        global.Chance = require('chance').Chance();
         global.logger = require('log4js').getLogger();
         global.logger.level = 'info';
     }
