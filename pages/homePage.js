@@ -21,17 +21,16 @@ class HomePage {
         return element(by.model('filter.cuisine'));
     };
 
-    get countOfRestaurants() {
-        return element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).count()
-    };
-
     get clearRatingButton() {
         return element(by.xpath("//fm-rating[1]/a"));
-
     };
 
     get clearPriceButton() {
         return element(by.xpath("//fm-rating[2]/a"));
+    };
+
+    getCountOfRestaurantsFromResultsList() {
+        return element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).count()
     };
 
     getRatingFilter(value) {
@@ -112,18 +111,6 @@ class HomePage {
             this.selectCuisine(cuisine.typeOfRestaurant);
         })
     };
-
-    // getNamesOfRestaurantsInTheList() {
-    //     let names = [];
-    //     element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).then(elements=>{
-    //         logger.info(`${elements}`);
-    //         elements.forEach(el=> {
-    //             logger.info(`${el.element(by.css('b[class="ng-binding"]')).getText().toString()}`);
-    //             names.push(el.element(by.css('b[class="ng-binding"]')).getText().toString());
-    //         })
-    //     })
-    //     return names;
-    // }
 
 }
 
