@@ -1,10 +1,20 @@
-let HomePage = require('../pages/homePage');
-let combinationsData = require("../data/lit-basin-41473/combinationsData");
 let Chance = require('chance');
+let Helper = require('../helper/helper.js');
+let HomePage = require('../pages/homePage');
+let data = require('../data/lit-basin-41473/data.json')
 
 
-const CUISINES_COMBINATION_RATING_AND_PRICE = Chance().pickone(combinationsData.combinationsPriceAndRating),
-    CUISINES_COMBINATION_ALL_FILTERS = Chance().pickone(combinationsData.combinationsAllFilters);
+const RESTAURANTS_DATA = data.restaurants,
+    CUISINES = Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA),
+    RANDOM_CUISINE = Chance().pickone(CUISINES),
+    RATINGS = Helper.getRatingsFromRestaurants(RESTAURANTS_DATA),
+    RANDOM_RATING = Chance().pickone(RATINGS),
+    PRICES = Helper.getPricesFromRestaurants(RESTAURANTS_DATA),
+    RANDOM_PRICE = Chance().pickone(PRICES),
+    RESTAURANTS_WITH_RATING_AND_PRICE =
+        Helper.getRestaurantsWithRatingAndPrice(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE),
+    RESTAURANTS_WITH_RATING_AND_PRICE_AND_CUISINE =
+        Helper.getRestaurantsWithRatingAndPriceAndCuisine(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE, RANDOM_CUISINE);
 
 
 describe('Home Page -> Filter by combined parameters', function () {
@@ -16,23 +26,23 @@ describe('Home Page -> Filter by combined parameters', function () {
 
     it('Filter by rating and price', () => {
         logger.info('WHEN User sets the rating');
-        HomePage.setRatingFilter(CUISINES_COMBINATION_RATING_AND_PRICE.rating);
+        HomePage.setRatingFilter(RATING);
         logger.info('AND User sets the price');
-        HomePage.setPriceFilter(CUISINES_COMBINATION_RATING_AND_PRICE.price);
+        HomePage.setPriceFilter(PRICE);
         logger.info('THEN The number of results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINES_COMBINATION_RATING_AND_PRICE.totalResults);
+        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_WITH_RATING_AND_PRICE.length);
     });
 
     it('Filter by rating, price and cuisines', () => {
         logger.info('WHEN User sets price');
-        HomePage.setRatingFilter(CUISINES_COMBINATION_ALL_FILTERS.rating);
+        HomePage.setRatingFilter(RANDOM_RATING);
         logger.info('AND User sets rating');
-        HomePage.setPriceFilter(CUISINES_COMBINATION_ALL_FILTERS.price);
-        logger.info(`AND User sets the ${CUISINES_COMBINATION_ALL_FILTERS.typeOfRestaurant} `);
-        HomePage.selectCuisine(CUISINES_COMBINATION_ALL_FILTERS.typeOfRestaurant);
+        HomePage.setPriceFilter(RANDOM_PRICE);
+        logger.info(`AND User sets the cuisine`);
+        HomePage.selectCuisine(RANDOM_CUISINE);
         logger.info('THEN The number of results is correct');
-        logger.info(CUISINES_COMBINATION_ALL_FILTERS.totalResults);
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(CUISINES_COMBINATION_ALL_FILTERS.totalResults);
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(RESTAURANTS_WITH_RATING_AND_PRICE_AND_CUISINE.length);
     });
 
     afterEach(() => {

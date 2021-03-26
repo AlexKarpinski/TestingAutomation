@@ -20,8 +20,8 @@ describe('Home Page -> Filter by rating', () => {
 
     it('Filter by rating', () => {
         logger.info('THEN The number of results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).
-            toEqual(Helper.getRestaurantsWithRating(RESTAURANTS_DATA, RATING).length);
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getRestaurantsWithRating(RESTAURANTS_DATA, RATING).length);
     });
 
     it('Clear rating filter', () => {

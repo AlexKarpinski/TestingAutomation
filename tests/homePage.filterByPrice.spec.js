@@ -20,8 +20,8 @@ describe('Home Page -> Filter by price', () => {
 
     it('Filter by price', () => {
         logger.info('THEN The number of results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).
-            toEqual(Helper.getRestaurantsWithPrice(RESTAURANTS_DATA, PRICE).length);
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getRestaurantsWithPrice(RESTAURANTS_DATA, PRICE).length);
     });
 
     it('Clear price filter', () => {
