@@ -10,11 +10,14 @@
   "dependencies": {
     "chance": "^1.1.7",
     "jasmine": "^3.7.0",
+    "jasmine-allure-reporter": "^1.0.2",
     "jasmine-data-provider": "^2.2.0",
     "log4js": "^6.3.0",
     "protractor": "^7.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "allure-commandline": "^2.13.8"
+  },
   "scripts": {
     "update-deps": "npm update",
     "prestart": "npm install",
