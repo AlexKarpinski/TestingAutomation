@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Demo project",
+  "repository": "https://github.com/AlexKarpinski/TestingAutomation.git",
   "directories": {
     "test": "tests"
   },
@@ -19,7 +20,7 @@
     "prestart": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor protractor.conf.js --suite filters"
+    "protractor": "protractor protractor.conf.js --suite allSuites"
   },
   "license": "ISC"
 }
