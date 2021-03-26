@@ -1,8 +1,9 @@
 let HomePage = require('../pages/homePage');
 let ratingData = require("../data/ratingData");
+let Chance = require('chance');
 
 
-const RATING = Chance().pickone(ratingData.ratings);
+const RATING = Object.values(ratingData.ratings)[Chance().integer({min: 0, max: 4})];
 
 
 describe('Home Page -> Filter by rating', function () {

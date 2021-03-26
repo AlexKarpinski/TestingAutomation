@@ -1,6 +1,6 @@
 let HomePage = require('../pages/homePage');
 let combinationsData = require("../data/combinationsData");
-
+let Chance = require('chance');
 
 const CUISINES_COMBINATION_RATING_AND_PRICE = Chance().pickone(combinationsData.combinationsPriceAndRating),
     CUISINES_COMBINATION_ALL_FILTERS = Chance().pickone(combinationsData.combinationsAllFilters);

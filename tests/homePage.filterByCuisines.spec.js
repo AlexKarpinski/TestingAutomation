@@ -1,6 +1,7 @@
 let HomePage = require('../pages/homePage');
 let Helper = require('../helper/helper.js');
 let cuisinesData = require("../data/cuisinesData");
+let Chance = require('chance');
 
 
 const CUISINE = Chance().pickone(cuisinesData.cuisine),

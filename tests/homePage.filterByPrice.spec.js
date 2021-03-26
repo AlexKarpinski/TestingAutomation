@@ -1,8 +1,9 @@
 let HomePage = require('../pages/homePage');
 let priceData = require("../data/priceData");
+let Chance = require('chance');
 
 
-const PRICE = Chance().pickone(priceData.prices);
+const PRICE = Object.values(priceData.prices)[Chance().integer({min: 0, max: 4})];
 
 
 describe('Home Page -> Filter by price', function () {
