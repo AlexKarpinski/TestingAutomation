@@ -23,7 +23,6 @@ describe('Home Page -> Filter by cuisines', function () {
         logger.info('THEN The count of restaurants in the list should be as count of restaurant from label');
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(HomePage.getCountOfRestaurantsFromLabel());
         logger.info('AND The count of found results is correct');
-        logger.info(Helper.getNumberOfRestaurantsWithCuisines(RESTAURANTS_DATA, CUISINES));
         expect(HomePage.getCountOfRestaurantsFromResultsList())
             .toEqual(Helper.getNumberOfRestaurantsWithCuisines(RESTAURANTS_DATA, RANDOM_CUISINES));
     });
