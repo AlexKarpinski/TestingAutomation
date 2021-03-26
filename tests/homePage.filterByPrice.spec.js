@@ -1,6 +1,5 @@
 let HomePage = require('../pages/homePage');
 let priceData = require("../data/priceData");
-let Chance = require('chance');
 
 
 const PRICE = Chance().pickone(priceData.prices);

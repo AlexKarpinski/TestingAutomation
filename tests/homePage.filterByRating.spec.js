@@ -1,6 +1,5 @@
 let HomePage = require('../pages/homePage');
 let ratingData = require("../data/ratingData");
-let Chance = require('chance');
 
 
 const RATING = Chance().pickone(ratingData.ratings);
