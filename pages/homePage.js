@@ -3,12 +3,12 @@ class HomePage {
     open() {
         browser.waitForAngularEnabled(false);
         browser.get(browser.baseUrl);
-        this.waitForPageLoading()
+        this.waitForPageLoading();
     };
 
     reload() {
         browser.refresh();
-        this.waitForPageLoading()
+        this.waitForPageLoading();
     };
 
     get listOfRestaurantsLabel() {
@@ -43,18 +43,8 @@ class HomePage {
         return this.cuisineList.element(by.css(`input[value="${typeOfCuisines}"]`));
     };
 
-    getRatingElement(index) {
-        return element.all(by.xpath(`//table//tr[${index + 2}]` +
-            `//fm-rating[@ng-model="$parent.restaurant.rating"]//*[contains(@class,"fm-selected")]`))
-    };
-
-    getPriceElement(index) {
-        return element.all(by.xpath(`//table//tr[${index + 2}]` +
-            `//fm-rating[@ng-model="$parent.restaurant.price"]//*[contains(@class,"fm-selected")]`))
-    };
-
     waitForPageLoading() {
-        browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, 'restaurants found!'))
+        browser.wait(EC.textToBePresentInElement(this.listOfRestaurantsLabel, 'restaurants found!'));
     };
 
     async selectCuisine(cuisine) {
@@ -68,8 +58,8 @@ class HomePage {
         })
     };
 
-    async setRatingFilter(value) {
-        await this.getRatingFilter(value).click();
+    setRatingFilter(value) {
+        this.getRatingFilter(value).click();
     };
 
     async setPriceFilter(value) {
@@ -77,11 +67,11 @@ class HomePage {
     };
 
     moveMouseToRatingFilter() {
-        browser.actions().mouseMove(this.clearRatingButton).perform()
+        browser.actions().mouseMove(this.clearRatingButton).perform();
     };
 
     moveMouseToPriceFilter() {
-        browser.actions().mouseMove(this.clearPriceButton).perform()
+        browser.actions().mouseMove(this.clearPriceButton).perform();
     };
 
     clearRatingFilter() {
@@ -96,15 +86,7 @@ class HomePage {
         this.clearPriceButton.click()
     };
 
-    async getRatingForRestaurantInList(index) {
-        return (await this.getRatingElement(index)).count()
-    };
-
-    async getPriceForRestaurantInList(index) {
-        return (await this.getPriceElement(index)).count()
-    };
-
-    async selectCuisines(cuisines) {
+    selectCuisines(cuisines) {
         cuisines.forEach(cuisine => {
             this.selectCuisine(cuisine.typeOfRestaurant);
         })
