@@ -19,11 +19,13 @@ exports.config = {
         defaultTimeoutInterval: 30000
     },
     suites: {
-        filterByEachCuisines: ['tests/home.page.filterByEachCuisine.spec.js'],
-        filterByCuisines: ['tests/homePage.filterByCuisines.spec.js'],
-        filterByRating: ['tests/homePage.filterByRating.spec.js'],
-        filterByPrice: ['tests/homePage.filterByPrice.spec.js'],
-        filterByCombinedParameters: ['tests/homePage.filterByCombinedParameters.spec.js'],
+        filterByEachCuisines: ['tests/smoke/homePage.filterByEachCuisine.spec.js'],
+        filterByRating: ['tests/smoke/homePage.filterByRating.spec.js'],
+        filterByPrice: ['tests/smoke/homePage.filterByPrice.spec.js'],
+        filterByCuisines: ['tests/regression/homePage.filterByCuisines.spec.js'],
+        filterByCombinedParameters: ['tests/regression/homePage.filterByCombinedParameters.spec.js'],
+        smoke:['tests/smoke/*.js'],
+        regression:['tests/regression/*.js'],
         allSuites: ['tests/*.js']
     },
     onPrepare: function () {
