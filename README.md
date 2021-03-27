@@ -19,9 +19,21 @@ npm install
 protractor protractor.conf.js --suite allSuites
 ```
 
+### For running smoke suite run command
+```
+protractor protractor.conf.js --suite smoke
+```
+
+### For running regression suite perform the command
+```
+protractor protractor.conf.js --suite regression
+```
+
 ### Allure report.
 After tests execution is completed, results are loaded into allure-results folder.
 To open allure report use the following command:
 ```
 allure serve allure-results
+Note: Before running tests it makes sense to clear allure-results folder if it is not empty:
+rmdir allure-results
 ```
