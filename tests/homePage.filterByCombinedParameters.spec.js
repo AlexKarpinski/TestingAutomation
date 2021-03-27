@@ -1,16 +1,13 @@
 let Chance = require('chance');
 let Helper = require('../helper/helper.js');
 let HomePage = require('../pages/homePage');
-let data = require('../data/lit-basin-41473/data.json')
+let data = require('../data/lit-basin-41473/restaurantsData.json')
 
 
 const RESTAURANTS_DATA = data.restaurants,
-    CUISINES = Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA),
-    RANDOM_CUISINE = Chance().pickone(CUISINES),
-    RATINGS = Helper.getRatingsFromRestaurants(RESTAURANTS_DATA),
-    RANDOM_RATING = Chance().pickone(RATINGS),
-    PRICES = Helper.getPricesFromRestaurants(RESTAURANTS_DATA),
-    RANDOM_PRICE = Chance().pickone(PRICES),
+    RANDOM_CUISINE = Chance().pickone(Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA)),
+    RANDOM_RATING = Chance().pickone(Helper.getRatingsFromRestaurants(RESTAURANTS_DATA)),
+    RANDOM_PRICE = Chance().pickone(Helper.getPricesFromRestaurants(RESTAURANTS_DATA)),
     RESTAURANTS_WITH_RATING_AND_PRICE =
         Helper.getRestaurantsWithRatingAndPrice(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE),
     RESTAURANTS_WITH_RATING_AND_PRICE_AND_CUISINE =
@@ -26,9 +23,9 @@ describe('Home Page -> Filter by combined parameters', function () {
 
     it('Filter by rating and price', () => {
         logger.info('WHEN User sets the rating');
-        HomePage.setRatingFilter(RATING);
+        HomePage.setRatingFilter(RANDOM_RATING);
         logger.info('AND User sets the price');
-        HomePage.setPriceFilter(PRICE);
+        HomePage.setPriceFilter(RANDOM_PRICE);
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_WITH_RATING_AND_PRICE.length);
     });

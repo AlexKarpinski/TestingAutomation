@@ -1,12 +1,12 @@
 let Chance = require('chance');
 let Helper = require('../helper/helper.js');
 let HomePage = require('../pages/homePage');
-let data = require('../data/lit-basin-41473/data.json')
+let data = require('../data/lit-basin-41473/restaurantsData.json')
 
 
 const RESTAURANTS_DATA = data.restaurants,
     RATINGS = Helper.getRatingsFromRestaurants(RESTAURANTS_DATA),
-    RATING = Chance().pickone(RATINGS);
+    RANDOM_RATING = Chance().pickone(RATINGS);
 
 
 describe('Home Page -> Filter by rating', () => {
@@ -15,13 +15,13 @@ describe('Home Page -> Filter by rating', () => {
         logger.info('GIVEN User at Home Page');
         HomePage.open();
         logger.info('WHEN User sets rating');
-        HomePage.setRatingFilter(RATING);
+        HomePage.setRatingFilter(RANDOM_RATING);
     });
 
     it('Filter by rating', () => {
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList())
-            .toEqual(Helper.getRestaurantsWithRating(RESTAURANTS_DATA, RATING).length);
+            .toEqual(Helper.getRestaurantsWithRating(RESTAURANTS_DATA, RANDOM_RATING).length);
     });
 
     it('Clear rating filter', () => {

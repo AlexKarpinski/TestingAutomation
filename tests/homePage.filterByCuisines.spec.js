@@ -1,12 +1,12 @@
 let Chance = require('chance');
 let Helper = require('../helper/helper.js');
 let HomePage = require('../pages/homePage');
-let data = require('../data/lit-basin-41473/data.json');
+let data = require('../data/lit-basin-41473/restaurantsData.json');
 
 
 const RESTAURANTS_DATA = data.restaurants,
     CUISINES = Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA),
-    NUMBER_OF_CUISINES = [Chance().integer({min: 2, max: 14})],
+    NUMBER_OF_CUISINES = [Chance().integer({min: 2, max: CUISINES.length})],
     RANDOM_CUISINES = Chance().pickset(CUISINES, NUMBER_OF_CUISINES);
 
 

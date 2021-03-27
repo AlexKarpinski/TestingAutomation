@@ -1,12 +1,12 @@
 let Chance = require('chance');
 let Helper = require('../helper/helper.js');
 let HomePage = require('../pages/homePage');
-let data = require('../data/lit-basin-41473/data.json');
+let data = require('../data/lit-basin-41473/restaurantsData.json');
 
 
 const RESTAURANTS_DATA = data.restaurants,
     PRICES = Helper.getPricesFromRestaurants(RESTAURANTS_DATA),
-    PRICE = Chance().pickone(PRICES);
+    RANDOM_PRICE = Chance().pickone(PRICES);
 
 
 describe('Home Page -> Filter by price', () => {
@@ -15,13 +15,13 @@ describe('Home Page -> Filter by price', () => {
         logger.info('GIVEN User at Home Page');
         HomePage.open();
         logger.info('WHEN User sets prise');
-        HomePage.setPriceFilter(PRICE);
+        HomePage.setPriceFilter(RANDOM_PRICE);
     });
 
     it('Filter by price', () => {
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList())
-            .toEqual(Helper.getRestaurantsWithPrice(RESTAURANTS_DATA, PRICE).length);
+            .toEqual(Helper.getRestaurantsWithPrice(RESTAURANTS_DATA, RANDOM_PRICE).length);
     });
 
     it('Clear price filter', () => {
