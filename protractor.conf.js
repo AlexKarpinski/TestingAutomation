@@ -3,7 +3,7 @@ exports.config = {
     allScriptsTimeout: 12000,
 
     specs: [
-        './tests/*.js'
+        './tests/**/*.js'
     ],
 
     capabilities: {
@@ -26,7 +26,7 @@ exports.config = {
         filterByCombinedParameters: ['tests/regression/homePage.filterByCombinedParameters.spec.js'],
         smoke:['tests/smoke/*.js'],
         regression:['tests/regression/*.js'],
-        allSuites: ['tests/*.js']
+        allSuites: ['tests/**/*.js']
     },
     onPrepare: function () {
         let AllureReporter = require('jasmine-allure-reporter');
