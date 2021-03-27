@@ -7,11 +7,7 @@ let data = require('../../data/lit-basin-41473/restaurantsData.json')
 const RESTAURANTS_DATA = data.restaurants,
     RANDOM_CUISINE = Chance().pickone(Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA)),
     RANDOM_RATING = Chance().pickone(Helper.getRatingsFromRestaurants(RESTAURANTS_DATA)),
-    RANDOM_PRICE = Chance().pickone(Helper.getPricesFromRestaurants(RESTAURANTS_DATA)),
-    RESTAURANTS_WITH_RATING_AND_PRICE =
-        Helper.getRestaurantsWithRatingAndPrice(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE),
-    RESTAURANTS_WITH_RATING_AND_PRICE_AND_CUISINE =
-        Helper.getRestaurantsWithRatingAndPriceAndCuisine(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE, RANDOM_CUISINE);
+    RANDOM_PRICE = Chance().pickone(Helper.getPricesFromRestaurants(RESTAURANTS_DATA));
 
 
 describe('Home Page -> Filter by combined parameters', function () {
@@ -27,7 +23,28 @@ describe('Home Page -> Filter by combined parameters', function () {
         logger.info('AND User sets the price');
         HomePage.setPriceFilter(RANDOM_PRICE);
         logger.info('THEN The number of results is correct');
-        expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_WITH_RATING_AND_PRICE.length);
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getRestaurantsWithRatingAndPrice(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE).length);
+    });
+
+    it('Filter by rating and cuisine', () => {
+        logger.info('WHEN User sets the rating');
+        HomePage.setRatingFilter(RANDOM_RATING);
+        logger.info('WHEN User sets the cuisine');
+        HomePage.selectCuisine(RANDOM_CUISINE);
+        logger.info('THEN The number of results is correct');
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getRestaurantsWithRatingAndCuisine(RESTAURANTS_DATA, RANDOM_RATING, RANDOM_CUISINE).length);
+    });
+
+    it('Filter by price and cuisine', () => {
+        logger.info('WHEN User sets the price');
+        HomePage.setPriceFilter(RANDOM_PRICE);
+        logger.info('WHEN User sets the cuisine');
+        HomePage.selectCuisine(RANDOM_CUISINE);
+        logger.info('THEN The number of results is correct');
+        expect(HomePage.getCountOfRestaurantsFromResultsList())
+            .toEqual(Helper.getRestaurantsWithPriceAndCuisine(RESTAURANTS_DATA, RANDOM_PRICE, RANDOM_CUISINE).length);
     });
 
     it('Filter by rating, price and cuisines', () => {
@@ -39,7 +56,10 @@ describe('Home Page -> Filter by combined parameters', function () {
         HomePage.selectCuisine(RANDOM_CUISINE);
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList())
-            .toEqual(RESTAURANTS_WITH_RATING_AND_PRICE_AND_CUISINE.length);
+            .toEqual(Helper
+                .getRestaurantsWithRatingAndPriceAndCuisine(
+                    RESTAURANTS_DATA, RANDOM_RATING, RANDOM_PRICE, RANDOM_CUISINE).length
+            );
     });
 
     afterEach(() => {
