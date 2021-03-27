@@ -14,22 +14,22 @@ git clone https://github.com/AlexKarpinski/TestingAutomation.git
 npm install
 ```
 
-### For running all tests perform the command
+### For running all tests perform the command:
 ```
 protractor protractor.conf.js --suite allSuites
 ```
 
-### For running smoke suite run command
+### For running smoke suite run command:
 ```
 protractor protractor.conf.js --suite smoke
 ```
 
-### For running regression suite perform the command
+### For running regression suite run command:
 ```
 protractor protractor.conf.js --suite regression
 ```
 
-### Allure report.
+### Allure report:
 After tests execution is completed, results are loaded into allure-results folder.
 To open allure report use the following command:
 ```
