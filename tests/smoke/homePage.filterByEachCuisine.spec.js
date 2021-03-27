@@ -1,6 +1,6 @@
-let Helper = require('../helper/helper.js');
-let HomePage = require('../pages/homePage');
-let data = require('../data/lit-basin-41473/restaurantsData.json');
+let Helper = require('../../helper/helper.js');
+let HomePage = require('../../pages/homePage');
+let data = require('../../data/lit-basin-41473/restaurantsData.json');
 
 
 const RESTAURANTS_DATA = data.restaurants,
