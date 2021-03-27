@@ -28,7 +28,7 @@ class HomePage {
     };
 
     getCountOfRestaurantsFromResultsList() {
-        return element.all(by.xpath('//tr[@ng-repeat="restaurant in restaurants"]')).count()
+        return element.all(by.xpath('//tr[@ng-repeat="restaurant in restaurants"]')).count();
     };
 
     getRatingFilter(value) {
@@ -54,8 +54,8 @@ class HomePage {
     getCountOfRestaurantsFromLabel() {
         return this.listOfRestaurantsLabel.getText().then(text => {
             let elements = text.split(' ');
-            return +elements[0]
-        })
+            return +elements[0];
+        });
     };
 
     setRatingFilter(value) {
@@ -89,7 +89,7 @@ class HomePage {
     selectCuisines(cuisines) {
         cuisines.forEach(cuisine => {
             this.selectCuisine(cuisine);
-        })
+        });
     };
 
 }
