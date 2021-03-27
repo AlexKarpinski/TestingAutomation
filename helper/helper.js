@@ -43,6 +43,16 @@ class Helper {
         return this.getRestaurantsWithCuisine(restaurantsWithRatingAndPrice, cuisine);
     }
 
+    getRestaurantsWithRatingAndCuisine(restaurants, rating, cuisine) {
+        let restaurantsWithRating = this.getRestaurantsWithRating(restaurants, rating);
+        return this.getRestaurantsWithCuisine(restaurantsWithRating, cuisine);
+    }
+
+    getRestaurantsWithPriceAndCuisine(restaurants, price, cuisine) {
+        let restaurantsWithPrice = this.getRestaurantsWithPrice(restaurants, price);
+        return this.getRestaurantsWithCuisine(restaurantsWithPrice, cuisine);
+    }
+
 }
 
 module.exports = new Helper();
