@@ -5,8 +5,7 @@ let data = require('../../data/lit-basin-41473/restaurantsData.json')
 
 
 const RESTAURANTS_DATA = data.restaurants,
-    RATINGS = Helper.getRatingsFromRestaurants(RESTAURANTS_DATA),
-    RANDOM_RATING = Chance().pickone(RATINGS);
+    RANDOM_RATING = Chance().pickone(Helper.getRatingsFromRestaurants(RESTAURANTS_DATA));
 
 
 describe('Home Page -> Filter by rating', () => {

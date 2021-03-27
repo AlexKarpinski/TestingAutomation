@@ -5,8 +5,7 @@ let data = require('../../data/lit-basin-41473/restaurantsData.json');
 
 
 const RESTAURANTS_DATA = data.restaurants,
-    PRICES = Helper.getPricesFromRestaurants(RESTAURANTS_DATA),
-    RANDOM_PRICE = Chance().pickone(PRICES);
+    RANDOM_PRICE = Chance().pickone(Helper.getPricesFromRestaurants(RESTAURANTS_DATA));
 
 
 describe('Home Page -> Filter by price', () => {
