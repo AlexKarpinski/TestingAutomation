@@ -17,12 +17,5 @@
   "devDependencies": {
     "allure-commandline": "^2.13.8"
   },
-  "scripts": {
-    "update-deps": "npm update",
-    "prestart": "npm install",
-    "update-webdriver": "webdriver-manager update",
-    "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor protractor.conf.js --suite allSuites"
-  },
   "license": "ISC"
 }
