@@ -19,12 +19,12 @@ npm install
 protractor protractor.conf.js --suite allSuites
 ```
 
-### For running smoke suite run command:
+### For running the smoke suite run command:
 ```
 protractor protractor.conf.js --suite smoke
 ```
 
-### For running regression suite run command:
+### For running the regression suite run command:
 ```
 protractor protractor.conf.js --suite regression
 ```
