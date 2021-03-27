@@ -35,7 +35,12 @@ To open allure report use the following command:
 ```
 allure serve allure-results
 ```
-Note: Before running tests it makes sense to clear allure-results folder if it is not empty:
+Note: Before running tests it makes sense to delete allure-results folder if it is not empty:
+Windows:
 ```
 rmdir allure-results
+```
+Mac/linyx:
+```
+rm -rf allure-results
 ```
