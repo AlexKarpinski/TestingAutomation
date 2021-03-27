@@ -12,7 +12,7 @@ class HomePage {
     };
 
     get listOfRestaurantsLabel() {
-        return element(by.xpath("//div[contains(@class,'fm-restaurant-list')]//ng-pluralize"));
+        return element(by.xpath('//div[contains(@class,"fm-restaurant-list")]//ng-pluralize'));
     };
 
     get cuisineList() {
@@ -20,15 +20,15 @@ class HomePage {
     };
 
     get clearRatingButton() {
-        return element(by.xpath("//fm-rating[1]/a"));
+        return element(by.xpath('//fm-rating[1]/a'));
     };
 
     get clearPriceButton() {
-        return element(by.xpath("//fm-rating[2]/a"));
+        return element(by.xpath('//fm-rating[2]/a'));
     };
 
     getCountOfRestaurantsFromResultsList() {
-        return element.all(by.xpath("//tr[@ng-repeat='restaurant in restaurants']")).count()
+        return element.all(by.xpath('//tr[@ng-repeat="restaurant in restaurants"]')).count()
     };
 
     getRatingFilter(value) {
@@ -48,7 +48,7 @@ class HomePage {
     };
 
     selectCuisine(cuisine) {
-       this.getCuisineCheckbox(cuisine).click();
+        this.getCuisineCheckbox(cuisine).click();
     };
 
     getCountOfRestaurantsFromLabel() {

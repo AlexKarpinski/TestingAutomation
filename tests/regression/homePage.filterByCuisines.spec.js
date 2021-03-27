@@ -10,7 +10,7 @@ const RESTAURANTS_DATA = data.restaurants,
     RANDOM_CUISINES = Chance().pickset(CUISINES, NUMBER_OF_CUISINES);
 
 
-describe('Home Page -> Filter by cuisines', function () {
+describe('Home Page -> Filter by cuisines', () => {
 
     beforeEach(() => {
         logger.info('GIVEN User at Home Page');

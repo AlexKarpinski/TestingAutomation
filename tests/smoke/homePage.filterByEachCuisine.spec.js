@@ -7,7 +7,7 @@ const RESTAURANTS_DATA = data.restaurants,
     CUISINES = Helper.getCuisinesFromRestaurants(RESTAURANTS_DATA);
 
 
-describe('Home Page -> Filter by cuisines', function () {
+describe('Home Page -> Filter by cuisines', () => {
 
     beforeAll(() => {
         logger.info('GIVEN User at Home Page');

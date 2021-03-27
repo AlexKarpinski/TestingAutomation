@@ -10,7 +10,7 @@ const RESTAURANTS_DATA = data.restaurants,
     RANDOM_PRICE = Chance().pickone(Helper.getPricesFromRestaurants(RESTAURANTS_DATA));
 
 
-describe('Home Page -> Filter by combined parameters', function () {
+describe('Home Page -> Filter by combined parameters', () => {
 
     beforeAll(() => {
         logger.info('GIVEN User at Home Page');
