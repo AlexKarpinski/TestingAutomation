@@ -34,6 +34,8 @@ After tests execution is completed, results are loaded into allure-results folde
 To open allure report use the following command:
 ```
 allure serve allure-results
+```
 Note: Before running tests it makes sense to clear allure-results folder if it is not empty:
+```
 rmdir allure-results
 ```
