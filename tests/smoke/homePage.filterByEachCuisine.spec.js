@@ -14,6 +14,10 @@ describe('Home Page -> Filter by cuisines', function () {
         HomePage.open();
     });
 
+    /**
+     * [BUG] - Issue with finding checkbox for french cuisine:
+     * There is a french restaurant but there is no checkbox for it
+     */
     CUISINES.forEach(cuisine => {
         it(`Filter for ${cuisine}`, () => {
             logger.info(`WHEN User sets the ${cuisine}`);
