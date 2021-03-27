@@ -16,7 +16,7 @@ describe('Home Page -> Filter by cuisines', function () {
 
     /**
      * [BUG] - Issue with finding checkbox for french cuisine:
-     * There is a french restaurant but there is no checkbox for it
+     * There is a french restaurant but there is no checkbox for this cuisine
      */
     CUISINES.forEach(cuisine => {
         it(`Filter for ${cuisine}`, () => {
