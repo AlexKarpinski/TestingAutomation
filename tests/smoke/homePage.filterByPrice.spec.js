@@ -25,7 +25,7 @@ describe('Home Page -> Filter by price', () => {
     });
 
     it('Clear price filter', () => {
-        logger.info(`WHEN User clears price filter`);
+        logger.info('WHEN User clears price filter');
         HomePage.clearPriceFilter();
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_DATA.length);

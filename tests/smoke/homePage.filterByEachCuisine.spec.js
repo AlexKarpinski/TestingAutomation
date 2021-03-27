@@ -15,7 +15,7 @@ describe('Home Page -> Filter by cuisines', function () {
     });
 
     CUISINES.forEach(cuisine => {
-        it('Filter for each cuisine', () => {
+        it(`Filter for ${cuisine}`, () => {
             logger.info(`WHEN User sets the ${cuisine}`);
             HomePage.selectCuisine(cuisine);
             logger.info(`THEN ${cuisine} checkbox should be checked `);

@@ -25,7 +25,7 @@ describe('Home Page -> Filter by rating', () => {
     });
 
     it('Clear rating filter', () => {
-        logger.info(`WHEN User clears rating filter`);
+        logger.info('WHEN User clears rating filter');
         HomePage.clearRatingFilter();
         logger.info('THEN The number of results is correct');
         expect(HomePage.getCountOfRestaurantsFromResultsList()).toEqual(RESTAURANTS_DATA.length);
