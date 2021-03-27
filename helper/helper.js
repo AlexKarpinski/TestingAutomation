@@ -5,8 +5,8 @@ class Helper {
     };
 
     getCuisinesFromRestaurants(restaurants) {
-       let cuisines = restaurants.map(restaurants => restaurants.cuisine);
-       return cuisines.filter((item, index) => cuisines.indexOf(item)===index);
+        let cuisines = restaurants.map(restaurants => restaurants.cuisine);
+        return cuisines.filter((item, index) => cuisines.indexOf(item) === index);
     }
 
     getNumberOfRestaurantsWithCuisines(restaurants, cuisines) {
@@ -16,7 +16,7 @@ class Helper {
 
     getPricesFromRestaurants(restaurants) {
         let prices = restaurants.map(restaurants => restaurants.price);
-        return prices.filter((item, index) => prices.indexOf(item)===index);
+        return prices.filter((item, index) => prices.indexOf(item) === index);
     }
 
     getRestaurantsWithPrice(restaurants, price) {
@@ -25,7 +25,7 @@ class Helper {
 
     getRatingsFromRestaurants(restaurants) {
         let ratings = restaurants.map(restaurants => restaurants.rating);
-        return ratings.filter((item, index) => ratings.indexOf(item)===index);
+        return ratings.filter((item, index) => ratings.indexOf(item) === index);
     }
 
     getRestaurantsWithRating(restaurants, rating) {
