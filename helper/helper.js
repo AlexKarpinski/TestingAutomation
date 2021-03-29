@@ -11,7 +11,8 @@ class Helper {
 
     getNumberOfRestaurantsWithCuisines(restaurants, cuisines) {
         let initialValue = 0;
-        return cuisines.reduce((sum, cuisine) => sum + this.getRestaurantsWithCuisine(restaurants, cuisine).length, initialValue);
+        return cuisines.reduce((sum, cuisine) =>
+            sum + this.getRestaurantsWithCuisine(restaurants, cuisine).length, initialValue);
     };
 
     getPricesFromRestaurants(restaurants) {
